@@ -150,13 +150,9 @@ export function Navbar() {
           ))}
 
           <div className="mt-2 border-t border-border pt-3">
-            <Button
-              href="/contact"
-              className="w-full"
-              onClick={() => setOpen(false)}
-            >
-              Start a Project
-            </Button>
+            <Link href="/contact" onClick={() => setOpen(false)}>
+              <Button className="w-full">Start a Project</Button>
+            </Link>
           </div>
         </div>
       ) : null}
