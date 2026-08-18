@@ -5,12 +5,15 @@ import { useEffect } from "react";
 
 export function MotionProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    // Disable smooth scrolling on mobile/touch devices
+    const isTouchDevice = window.matchMedia("(hover: none)").matches;
+
+    // Respect user's reduced-motion preference
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    if (isMobile || prefersReducedMotion) {
+    if (isTouchDevice || prefersReducedMotion) {
       return;
     }
 
