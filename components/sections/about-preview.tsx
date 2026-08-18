@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function AboutPreview() {
   return (
-    <section className="section-pad">
+    <section className="section-pad overflow-hidden">
       <div className="container-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <Reveal>
           <div className="premium-border overflow-hidden rounded-[8px] bg-panel p-3 shadow-premium">

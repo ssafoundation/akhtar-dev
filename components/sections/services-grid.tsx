@@ -5,7 +5,11 @@ import { services } from "@/data/site";
 
 export function ServicesGrid({ compact = false }: { compact?: boolean }) {
   return (
-    <section className={compact ? "py-10" : "section-pad"}>
+    <section
+      className={
+        compact ? "py-10 overflow-hidden" : "section-pad overflow-hidden"
+      }
+    >
       <div className="container-shell">
         {!compact ? (
           <SectionHeading
@@ -19,8 +23,12 @@ export function ServicesGrid({ compact = false }: { compact?: boolean }) {
             <Reveal key={service.title} delay={index * 0.04}>
               <Card tilt className="h-full p-7">
                 <service.icon className="h-8 w-8 text-accent" />
-                <h3 className="headline mt-8 text-2xl font-semibold">{service.title}</h3>
-                <p className="mt-4 leading-7 text-muted">{service.description}</p>
+                <h3 className="headline mt-8 text-2xl font-semibold">
+                  {service.title}
+                </h3>
+                <p className="mt-4 leading-7 text-muted">
+                  {service.description}
+                </p>
               </Card>
             </Reveal>
           ))}

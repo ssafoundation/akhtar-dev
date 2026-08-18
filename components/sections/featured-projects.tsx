@@ -1,15 +1,15 @@
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/animations/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { projects } from "@/data/site";
+import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export function FeaturedProjects({ all = false }: { all?: boolean }) {
   const visibleProjects = all ? projects : projects.slice(0, 3);
 
   return (
-    <section id="featured" className="section-pad">
+    <section id="featured" className="section-pad overflow-hidden">
       <div className="container-shell">
         <SectionHeading
           eyebrow="Featured Projects"
@@ -43,18 +43,30 @@ export function FeaturedProjects({ all = false }: { all?: boolean }) {
                       <span className="h-1 w-1 rounded-full bg-accent" />
                       <span>{project.year}</span>
                     </div>
-                    <h3 className="headline mt-5 text-4xl font-semibold text-white sm:text-5xl">{project.name}</h3>
-                    <p className="mt-5 max-w-xl text-base leading-8 text-muted">{project.summary}</p>
+                    <h3 className="headline mt-5 text-4xl font-semibold text-white sm:text-5xl">
+                      {project.name}
+                    </h3>
+                    <p className="mt-5 max-w-xl text-base leading-8 text-muted">
+                      {project.summary}
+                    </p>
                   </div>
                   <div className="mt-10">
-                    <p className="headline text-2xl font-semibold text-accent">{project.result}</p>
+                    <p className="headline text-2xl font-semibold text-accent">
+                      {project.result}
+                    </p>
                     <div className="mt-6 flex flex-wrap gap-2">
                       {project.stack.map((item) => (
-                        <span key={item} className="rounded-full border border-white/10 px-3 py-1 text-xs text-muted">{item}</span>
+                        <span
+                          key={item}
+                          className="rounded-full border border-white/10 px-3 py-1 text-xs text-muted"
+                        >
+                          {item}
+                        </span>
                       ))}
                     </div>
                     <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white">
-                      View case study <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      View case study{" "}
+                      <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </div>
                 </div>
