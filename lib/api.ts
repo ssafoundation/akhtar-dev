@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API;
+const API_URL: string = process.env.NEXT_PUBLIC_WORDPRESS_API ?? "";
 
 if (!API_URL) {
   throw new Error("NEXT_PUBLIC_WORDPRESS_API is not configured");
@@ -19,7 +19,6 @@ export async function apiFetch<T>(
 
   const baseUrl = API_URL.replace(/\/$/, "");
   const cleanEndpoint = endpoint.replace(/^\//, "");
-
   const url = `${baseUrl}/${cleanEndpoint}`;
 
   const res = await fetch(url, {
