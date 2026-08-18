@@ -17,16 +17,20 @@ export async function apiFetch<T>(
 ): Promise<T> {
   const { method = "GET", body, revalidate = 60, tags = [] } = options;
 
-  const url = `${API_URL.replace(/\/$/, "")}/${endpoint.replace(/^\//, "")}`;
+  const baseUrl = API_URL.replace(/\/$/, "");
+  const cleanEndpoint = endpoint.replace(/^\//, "");
+
+  const url = `${baseUrl}/${cleanEndpoint}`;
 
   const res = await fetch(url, {
     method,
 
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
     },
 
-    ...(body
+    ...(body !== undefined
       ? {
           body: JSON.stringify(body),
         }
@@ -36,7 +40,7 @@ export async function apiFetch<T>(
       ? {
           next: {
             revalidate,
-            ...(tags.length ? { tags } : {}),
+            ...(tags.length > 0 ? { tags } : {}),
           },
         }
       : {
@@ -54,11 +58,11 @@ export async function apiFetch<T>(
         message = error.message;
       }
     } catch {
-      // Ignore invalid JSON error response
+      // Ignore invalid JSON response
     }
 
     throw new Error(message);
   }
 
-  return res.json();
+  return res.json() as Promise<T>;
 }
