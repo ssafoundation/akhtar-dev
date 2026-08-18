@@ -1,15 +1,15 @@
 import {
   Blocks,
   Code2,
+  Gauge,
   Gem,
   Globe2,
-  Gauge,
   LayoutTemplate,
   MonitorSmartphone,
   PanelsTopLeft,
   ShoppingBag,
   Sparkles,
-  WandSparkles
+  WandSparkles,
 } from "lucide-react";
 
 export const navItems = [
@@ -17,14 +17,14 @@ export const navItems = [
   { href: "/about", label: "About" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" }
+  { href: "/contact", label: "Contact" },
 ];
 
 export const stats = [
   { value: 82, suffix: "+", label: "Premium builds shipped" },
   { value: 41, suffix: "+", label: "Five-star client reviews" },
   { value: 6, suffix: "+", label: "Years of delivery" },
-  { value: 18, suffix: "+", label: "Countries served" }
+  { value: 18, suffix: "+", label: "Countries served" },
 ];
 
 export const services = [
@@ -32,38 +32,38 @@ export const services = [
     title: "Shopify Development",
     description:
       "Conversion-focused storefronts, custom sections, Liquid architecture, app integrations, and refined buying experiences.",
-    icon: ShoppingBag
+    icon: ShoppingBag,
   },
   {
     title: "Landing Page Systems",
     description:
       "Premium launch pages with persuasive hierarchy, animation, forms, analytics, and rapid iteration baked in.",
-    icon: Sparkles
+    icon: Sparkles,
   },
   {
     title: "Theme Development",
     description:
       "Reusable theme foundations with clean schemas, merchant-friendly controls, and crisp responsive behavior.",
-    icon: LayoutTemplate
+    icon: LayoutTemplate,
   },
   {
     title: "Performance Optimization",
     description:
       "Core Web Vitals audits, image strategy, bundle discipline, caching, and interaction polish for fast storefronts.",
-    icon: Gauge
+    icon: Gauge,
   },
   {
     title: "WordPress & Wix",
     description:
       "Elegant business websites, CMS workflows, SEO foundations, and integrations that stay easy to maintain.",
-    icon: Globe2
+    icon: Globe2,
   },
   {
     title: "React & Next.js",
     description:
       "Modern product interfaces, dashboards, and marketing systems using TypeScript, App Router, and motion.",
-    icon: Code2
-  }
+    icon: Code2,
+  },
 ];
 
 export const projects = [
@@ -78,7 +78,7 @@ export const projects = [
     image:
       "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1600&q=80",
     stack: ["Shopify", "Liquid", "GSAP", "Klaviyo"],
-    services: ["Theme architecture", "Performance", "Conversion UX"]
+    services: ["Theme architecture", "Performance", "Conversion UX"],
   },
   {
     slug: "nexora-saas",
@@ -91,7 +91,7 @@ export const projects = [
     image:
       "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80",
     stack: ["Next.js", "TypeScript", "Framer Motion", "CMS"],
-    services: ["Frontend engineering", "Design system", "SEO"]
+    services: ["Frontend engineering", "Design system", "SEO"],
   },
   {
     slug: "atelier-wp",
@@ -104,31 +104,31 @@ export const projects = [
     image:
       "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=80",
     stack: ["WordPress", "ACF", "Tailwind", "SEO"],
-    services: ["Custom theme", "CMS modeling", "Analytics"]
-  }
+    services: ["Custom theme", "CMS modeling", "Analytics"],
+  },
 ];
 
 export const process = [
   {
     title: "Discover",
     description:
-      "Clarify audience, offer, technical constraints, and the commercial outcome the site needs to produce."
+      "Clarify audience, offer, technical constraints, and the commercial outcome the site needs to produce.",
   },
   {
     title: "Design",
     description:
-      "Shape a visual system with premium hierarchy, motion cues, reusable sections, and mobile-first flows."
+      "Shape a visual system with premium hierarchy, motion cues, reusable sections, and mobile-first flows.",
   },
   {
     title: "Build",
     description:
-      "Engineer the experience with clean components, accessibility, performance budgets, and precise responsive behavior."
+      "Engineer the experience with clean components, accessibility, performance budgets, and precise responsive behavior.",
   },
   {
     title: "Launch",
     description:
-      "Test analytics, SEO, forms, deployment, Core Web Vitals, and post-launch refinements."
-  }
+      "Test analytics, SEO, forms, deployment, Core Web Vitals, and post-launch refinements.",
+  },
 ];
 
 export const timeline = [
@@ -136,26 +136,26 @@ export const timeline = [
     year: "2020",
     title: "Started Freelancing",
     description:
-      "Built the foundation through business websites, landing pages, and client-facing delivery."
+      "Built the foundation through business websites, landing pages, and client-facing delivery.",
   },
   {
     year: "2022",
     title: "Shopify Specialist",
     description:
-      "Focused deeply on Shopify themes, Liquid, conversion UX, and merchant-friendly customization."
+      "Focused deeply on Shopify themes, Liquid, conversion UX, and merchant-friendly customization.",
   },
   {
     year: "2024",
     title: "Full Stack Developer",
     description:
-      "Expanded into React, Next.js, TypeScript, API integrations, and higher-end product experiences."
+      "Expanded into React, Next.js, TypeScript, API integrations, and higher-end product experiences.",
   },
   {
     year: "2026",
     title: "Premium eCommerce Engineer",
     description:
-      "Designing polished digital storefronts and web systems for brands that care about taste and speed."
-  }
+      "Designing polished digital storefronts and web systems for brands that care about taste and speed.",
+  },
 ];
 
 export const skills = [
@@ -166,7 +166,7 @@ export const skills = [
   "TypeScript",
   "WordPress",
   "GSAP",
-  "Wix"
+  "Wix",
 ];
 
 export const testimonials = [
@@ -174,38 +174,38 @@ export const testimonials = [
     quote:
       "Akhtar brought agency-level taste with the focus of a senior engineer. Our Shopify store finally feels like our brand.",
     name: "Maya Rahman",
-    role: "Founder, Velora Studio"
+    role: "Founder, Velora Studio",
   },
   {
     quote:
       "He caught the tiny details that usually get missed: motion timing, mobile spacing, checkout friction, and SEO basics.",
     name: "Oliver Bennett",
-    role: "Growth Lead, Nexora"
+    role: "Growth Lead, Nexora",
   },
   {
     quote:
       "Fast, calm, precise. The site launched cleanly and our internal team can actually manage it without breaking things.",
     name: "Ariane Cole",
-    role: "Director, Atelier House"
-  }
+    role: "Director, Atelier House",
+  },
 ];
 
 export const faqs = [
   {
     question: "What type of projects are the best fit?",
     answer:
-      "Premium Shopify stores, high-converting landing pages, WordPress/Wix business websites, and React or Next.js frontends."
+      "Premium Shopify stores, high-converting landing pages, WordPress/Wix business websites, and React or Next.js frontends.",
   },
   {
     question: "Can the content and images be replaced later?",
     answer:
-      "Yes. The site is built around centralized content data and reusable components so the brand, copy, and case studies are easy to update."
+      "Yes. The site is built around centralized content data and reusable components so the brand, copy, and case studies are easy to update.",
   },
   {
     question: "Do you handle performance and SEO?",
     answer:
-      "Yes. Metadata, schema, sitemap, robots, semantic structure, responsive images, and performance-minded animation are included."
-  }
+      "Yes. Metadata, schema, sitemap, robots, semantic structure, responsive images, and performance-minded animation are included.",
+  },
 ];
 
 export const tech = [
@@ -216,17 +216,16 @@ export const tech = [
   "WordPress",
   "TypeScript",
   "GSAP",
-  "Wix"
+  "Wix",
 ];
 
 export const showcasePreviews = [
   {
-    title: "Shopify Store",
-    subtitle: "Luxury commerce storefront",
-    metric: "+38% add-to-cart",
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80",
-    tags: ["Shopify", "Liquid", "Checkout"]
+    title: "Versos Eternos",
+    subtitle: "Emotion-driven Shopify store for personalized music gifts",
+    metric: "24–48h delivery",
+    image: "/images/project-1.png",
+    tags: ["Shopify", "Liquid", "Custom Sections", "Responsive", "Performance"],
   },
   {
     title: "Shopify Landing Page",
@@ -234,7 +233,7 @@ export const showcasePreviews = [
     metric: "2.1x campaign ROAS",
     image:
       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1600&q=80",
-    tags: ["Shopify", "GSAP", "Klaviyo"]
+    tags: ["Shopify", "GSAP", "Klaviyo"],
   },
   {
     title: "WordPress Website",
@@ -242,7 +241,7 @@ export const showcasePreviews = [
     metric: "91 performance score",
     image:
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
-    tags: ["WordPress", "ACF", "SEO"]
+    tags: ["WordPress", "ACF", "SEO"],
   },
   {
     title: "Wix Website",
@@ -250,7 +249,7 @@ export const showcasePreviews = [
     metric: "+54% qualified leads",
     image:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
-    tags: ["Wix", "Velo", "Automations"]
+    tags: ["Wix", "Velo", "Automations"],
   },
   {
     title: "React / Next.js Dashboard",
@@ -258,7 +257,7 @@ export const showcasePreviews = [
     metric: "42ms route transitions",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
-    tags: ["React", "Next.js", "TypeScript"]
+    tags: ["React", "Next.js", "TypeScript"],
   },
   {
     title: "Corporate Website",
@@ -266,8 +265,8 @@ export const showcasePreviews = [
     metric: "3.4x inquiry quality",
     image:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
-    tags: ["Next.js", "Tailwind", "SEO"]
-  }
+    tags: ["Next.js", "Tailwind", "SEO"],
+  },
 ];
 
 export const showcaseBadges = [
@@ -278,7 +277,14 @@ export const showcaseBadges = [
   "WordPress",
   "Wix",
   "Tailwind CSS",
-  "GSAP"
+
+  "Liquid",
 ];
 
-export const featureIcons = [Gem, PanelsTopLeft, Blocks, MonitorSmartphone, WandSparkles];
+export const featureIcons = [
+  Gem,
+  PanelsTopLeft,
+  Blocks,
+  MonitorSmartphone,
+  WandSparkles,
+];

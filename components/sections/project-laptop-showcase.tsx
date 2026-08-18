@@ -66,31 +66,38 @@ export function ProjectLaptopShowcase({
         aria-hidden="true"
       />
 
-      {showcaseBadges.map((badge, index) => (
-        <motion.div
-          key={badge}
-          className={cn(
-            "absolute z-20 hidden rounded-full border border-white/10 bg-panel/76 px-4 py-2 text-xs font-semibold text-white shadow-premium backdrop-blur-xl md:block",
-            badgePositions[index],
-          )}
-          animate={{
-            y: [0, index % 2 ? -12 : 12, 0],
-            rotate: [
-              index % 2 ? -2 : 2,
-              index % 2 ? 2 : -2,
-              index % 2 ? -2 : 2,
-            ],
-          }}
-          transition={{
-            duration: 5 + index * 0.22,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ x: translateX, y: translateY }}
-        >
-          {badge}
-        </motion.div>
-      ))}
+      {showcaseBadges.map((badge, index) => {
+        const isActive = preview.tags.includes(badge);
+
+        return (
+          <motion.div
+            key={badge}
+            className={cn(
+              "absolute z-20 hidden rounded-full border px-4 py-2 text-xs font-semibold shadow-premium backdrop-blur-xl md:block transition-colors duration-500",
+              isActive
+                ? "border-accent/30 bg-accent/40 text-white"
+                : "border-white/10 bg-panel/76 text-white",
+              badgePositions[index],
+            )}
+            animate={{
+              y: [0, index % 2 ? -12 : 12, 0],
+              rotate: [
+                index % 2 ? -2 : 2,
+                index % 2 ? 2 : -2,
+                index % 2 ? -2 : 2,
+              ],
+            }}
+            transition={{
+              duration: 5 + index * 0.22,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{ x: translateX, y: translateY }}
+          >
+            {badge}
+          </motion.div>
+        );
+      })}
 
       <motion.div
         className="relative z-10"
@@ -98,7 +105,7 @@ export function ProjectLaptopShowcase({
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div className="mx-auto w-[92%] rounded-t-[20px] border border-white/14 bg-gradient-to-b from-[#202833] to-[#0b1017] p-[10px] shadow-[0_45px_120px_rgba(0,0,0,0.55)]">
+        <div className="mx-auto w-[92%] rounded-t-[20px] border border-white/14 bg-gradient-to-b from-[#20283300] to-[#0b1017] p-[10px] shadow-[0_45px_120px_rgba(0,0,0,0.55)]">
           <div className="rounded-t-[14px] border border-black/80 bg-black p-[5px]">
             <div className="relative overflow-hidden rounded-t-[10px] bg-obsidian">
               <div
@@ -198,10 +205,12 @@ export function ProjectLaptopShowcase({
         ))}
       </div>
 
-      <div className="absolute bottom-12 right-6 z-20 hidden rounded-[8px] border border-white/10 bg-obsidian/72 p-4 shadow-premium backdrop-blur-xl lg:block">
+      <div className="absolute bottom-80 -right-16 z-20 hidden rounded-[8px] border border-white/10 bg-obsidian/72 p-4 shadow-premium backdrop-blur-xl lg:block">
         <Code2 className="h-5 w-5 text-accent" />
         <p className="mt-3 text-xs text-muted">Type-safe UI</p>
-        <p className="headline text-lg font-semibold">Next.js + Shopify</p>
+        <p className="headline text-lg font-semibold">
+          {preview.tags.map((item) => item).join(" + ")}
+        </p>
       </div>
     </motion.div>
   );

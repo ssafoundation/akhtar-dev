@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { AboutPreview } from "@/components/sections/about-preview";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { ProjectLaptopShowcase } from "@/components/sections/project-laptop-showcase";
@@ -6,10 +5,11 @@ import { SkillsOrbit } from "@/components/sections/skills-orbit";
 import { Stats } from "@/components/sections/stats";
 import { Timeline } from "@/components/sections/timeline";
 import { SectionHeading } from "@/components/ui/section-heading";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "About MD. Akhtaruzzaman, the developer behind AKHTAR DEV."
+  description: "About MD. Akhtaruzzaman, the developer behind AKHTAR DEV.",
 };
 
 export default function AboutPage() {
