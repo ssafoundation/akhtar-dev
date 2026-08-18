@@ -22,11 +22,11 @@ export function FAQ() {
               key={item.question}
               type="button"
               onClick={() => setActive(index)}
-              className="w-full rounded-[8px] border border-white/10 bg-panel/70 p-5 text-left transition hover:border-accent/40"
+              className="w-full rounded-[8px] border  bg-elevated p-5 text-left transition hover:border-accent/40"
               aria-expanded={active === index}
             >
               <span className="flex items-center justify-between gap-5">
-                <span className="headline text-xl font-semibold text-white">
+                <span className="headline text-xl font-semibold ">
                   {item.question}
                 </span>
                 <ChevronDown

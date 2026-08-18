@@ -14,7 +14,7 @@ export function Process() {
         <div className="mt-14 grid gap-4 lg:grid-cols-4">
           {process.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.05}>
-              <div className="relative h-full rounded-[8px] border border-white/10 bg-obsidian/70 p-6">
+              <div className="relative h-full rounded-[8px] border  bg-elevated p-6">
                 <span className="headline text-sm text-accent">
                   0{index + 1}
                 </span>

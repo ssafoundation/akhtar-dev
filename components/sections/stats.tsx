@@ -1,8 +1,8 @@
 "use client";
 
+import { stats } from "@/data/site";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { stats } from "@/data/site";
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -19,12 +19,17 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
     return spring.on("change", (latest) => setDisplay(Math.round(latest)));
   }, [spring]);
 
-  return <span ref={ref}>{display}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {display}
+      {suffix}
+    </span>
+  );
 }
 
 export function Stats() {
   return (
-    <section className="py-12">
+    <section className="py-12 bg-lime-500/5">
       <div className="container-shell grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((item, index) => (
           <motion.div
@@ -35,7 +40,7 @@ export function Stats() {
             transition={{ delay: index * 0.05 }}
             className="rounded-[8px] border border-white/10 bg-white/[0.03] p-6"
           >
-            <p className="headline text-5xl font-semibold text-white">
+            <p className="headline text-5xl font-semibold ">
               <Counter value={item.value} suffix={item.suffix} />
             </p>
             <p className="mt-3 text-sm leading-6 text-muted">{item.label}</p>

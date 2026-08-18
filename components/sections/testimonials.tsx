@@ -17,11 +17,11 @@ export function Testimonials() {
             <Reveal key={item.name} delay={index * 0.05}>
               <Card className="h-full p-7">
                 <Quote className="h-7 w-7 text-accent" />
-                <p className="mt-8 text-lg leading-8 text-white/90">
+                <p className="mt-8 text-lg leading-8">
                   &ldquo;{item.quote}&rdquo;
                 </p>
                 <div className="mt-8 border-t border-white/10 pt-5">
-                  <p className="font-semibold text-white">{item.name}</p>
+                  <p className="font-semibold">{item.name}</p>
                   <p className="mt-1 text-sm text-muted">{item.role}</p>
                 </div>
               </Card>

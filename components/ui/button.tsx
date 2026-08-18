@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 type ButtonProps = {
   href?: string;
@@ -15,23 +15,26 @@ export function Button({
   children,
   variant = "primary",
   className,
-  type = "button"
+  type = "button",
 }: ButtonProps) {
   const classes = cn(
     "group inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition duration-300 focus-visible:outline accent",
     variant === "primary" &&
       "bg-accent text-obsidian shadow-glow hover:bg-white",
     variant === "ghost" &&
-      "border border-white/12 bg-white/[0.03] text-white hover:border-accent/60 hover:bg-accent/10",
+      "border border-white/12 bg-white/[0.03]  hover:border-accent/60 hover:bg-accent/10",
     variant === "dark" &&
-      "border border-line bg-obsidian text-white hover:border-accent/60",
-    className
+      "border border-line bg-obsidian  hover:border-accent/60",
+    className,
   );
 
   const content = (
     <>
       <span>{children}</span>
-      <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+      <ArrowUpRight
+        className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        aria-hidden="true"
+      />
     </>
   );
 

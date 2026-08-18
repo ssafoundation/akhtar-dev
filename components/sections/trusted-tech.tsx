@@ -2,7 +2,7 @@ import { tech } from "@/data/site";
 
 export function TrustedTech() {
   return (
-    <section className="border-y border-white/10 py-6 overflow-hidden">
+    <section className="border-y border-lime-500/10 py-6 overflow-hidden bg-lime-500/5">
       <div className="container-shell flex flex-col gap-4 md:flex-row md:items-center">
         <p className="text-sm uppercase tracking-[0.22em] text-muted">
           Trusted stack

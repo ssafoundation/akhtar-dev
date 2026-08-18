@@ -13,7 +13,7 @@ export function Hero() {
             <span className="h-2 w-2 rounded-full bg-accent shadow-glow" />
             Hello, I am MD. Akhtaruzzaman
           </div>
-          <h1 className="headline mt-7 max-w-4xl text-5xl font-semibold leading-[0.95] text-white sm:text-5xl lg:text-7xl">
+          <h1 className="headline mt-7 max-w-4xl text-5xl font-semibold leading-[0.95]  sm:text-5xl lg:text-7xl">
             Premium web experiences for ambitious digital brands.
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-muted">
@@ -29,15 +29,13 @@ export function Hero() {
           </div>
           <div className="mt-12 grid grid-cols-3 gap-3 border-t border-white/10 pt-7 text-sm text-muted">
             <div>
-              <strong className="block text-2xl text-white">6+</strong> Years
+              <strong className="block text-2xl ">6+</strong> Years
             </div>
             <div>
-              <strong className="block text-2xl text-white">82+</strong>{" "}
-              Projects
+              <strong className="block text-2xl ">82+</strong> Projects
             </div>
             <div>
-              <strong className="block text-2xl text-white">18+</strong>{" "}
-              Countries
+              <strong className="block text-2xl ">18+</strong> Countries
             </div>
           </div>
         </Reveal>

@@ -22,7 +22,7 @@ export function FeaturedProjects({ all = false }: { all?: boolean }) {
               <Link
                 href={`/portfolio/${project.slug}`}
                 data-tilt-card
-                className="group grid overflow-hidden rounded-[8px] border border-white/10 bg-panel/70 shadow-premium backdrop-blur lg:grid-cols-2"
+                className="group grid overflow-hidden rounded-[8px] border bg-elevated shadow-premium backdrop-blur lg:grid-cols-2"
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                   <div className="relative aspect-[1.18] overflow-hidden lg:aspect-auto lg:h-full">
@@ -43,7 +43,7 @@ export function FeaturedProjects({ all = false }: { all?: boolean }) {
                       <span className="h-1 w-1 rounded-full bg-accent" />
                       <span>{project.year}</span>
                     </div>
-                    <h3 className="headline mt-5 text-4xl font-semibold text-white sm:text-5xl">
+                    <h3 className="headline mt-5 text-4xl font-semibold  sm:text-5xl">
                       {project.name}
                     </h3>
                     <p className="mt-5 max-w-xl text-base leading-8 text-muted">
@@ -64,7 +64,7 @@ export function FeaturedProjects({ all = false }: { all?: boolean }) {
                         </span>
                       ))}
                     </div>
-                    <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                    <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold ">
                       View case study{" "}
                       <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>

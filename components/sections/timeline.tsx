@@ -19,7 +19,7 @@ export function Timeline() {
                   className={`relative grid gap-5 md:grid-cols-2 ${index % 2 ? "" : "md:text-right"}`}
                 >
                   <div className={index % 2 ? "md:col-start-2" : ""}>
-                    <div className="ml-12 rounded-[8px] border border-white/10 bg-panel/70 p-6 shadow-premium backdrop-blur md:ml-0">
+                    <div className="ml-12 rounded-[8px] border border-white/10 bg-elevated p-6 shadow-premium backdrop-blur md:ml-0">
                       <p className="headline text-3xl font-semibold text-accent">
                         {item.year}
                       </p>

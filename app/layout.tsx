@@ -1,6 +1,7 @@
 import { MotionProvider } from "@/components/animations/motion-provider";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { ThemeScript } from "@/components/theme/theme-script";
 import { siteUrl } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
@@ -20,28 +21,40 @@ const space = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+
   title: {
     default: "AKHTAR DEV | Premium Full Stack Web Developer",
     template: "%s | AKHTAR DEV",
   },
+
   description:
     "Premium portfolio of MD. Akhtaruzzaman, a Full Stack, Shopify, WordPress, Wix, React, and Next.js developer.",
+
   alternates: {
     canonical: "/",
   },
+
   openGraph: {
     title: "AKHTAR DEV | Premium Full Stack Web Developer",
+
     description:
       "High-end Shopify, WordPress, Wix, React, and Next.js development for brands that care about quality.",
+
     url: siteUrl,
+
     siteName: "AKHTAR DEV",
+
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
+
     title: "AKHTAR DEV",
+
     description: "Premium full stack web development portfolio.",
   },
+
   robots: {
     index: true,
     follow: true,
@@ -56,10 +69,15 @@ export default function RootLayout({
   const schema = {
     "@context": "https://schema.org",
     "@type": "Person",
+
     name: "MD. Akhtaruzzaman",
+
     alternateName: "AKHTAR DEV",
+
     jobTitle: "Full Stack Web Developer",
+
     url: siteUrl,
+
     knowsAbout: [
       "Shopify",
       "WordPress",
@@ -71,17 +89,28 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${space.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${space.variable}`}
+    >
+      <head>
+        <ThemeScript />
+      </head>
+
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
         />
+
         <MotionProvider>
-          {/* <MouseLight />
-          <GsapEffects /> */}
           <Navbar />
+
           {children}
+
           <Footer />
         </MotionProvider>
       </body>

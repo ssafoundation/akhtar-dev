@@ -9,7 +9,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { Code2, Gauge, Layers3, Sparkles } from "lucide-react";
+import { Gauge, Layers3, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -205,13 +205,13 @@ export function ProjectLaptopShowcase({
         ))}
       </div>
 
-      <div className="absolute bottom-80 -right-16 z-20 hidden rounded-[8px] border border-white/10 bg-obsidian/72 p-4 shadow-premium backdrop-blur-xl lg:block">
+      {/* <div className="absolute bottom-80 -right-16 z-20 hidden rounded-[8px] border border-white/10 bg-obsidian/72 p-4 shadow-premium backdrop-blur-xl lg:block">
         <Code2 className="h-5 w-5 text-accent" />
         <p className="mt-3 text-xs text-muted">Type-safe UI</p>
         <p className="headline text-lg font-semibold">
           {preview.tags.map((item) => item).join(" + ")}
         </p>
-      </div>
+      </div> */}
     </motion.div>
   );
 }
