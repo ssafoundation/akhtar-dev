@@ -1,6 +1,7 @@
 "use client";
 
-import { showcaseBadges, showcasePreviews } from "@/data/site";
+import { showcaseBadges } from "@/data/site";
+import { apiFetch } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import {
   AnimatePresence,
@@ -13,6 +14,30 @@ import { Gauge, Layers3, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+type Project = {
+  id: number;
+  name: string;
+  type: string;
+  result: string;
+  image?: {
+    url: string;
+    width: number;
+    height: number;
+    alt?: string;
+  } | null;
+  stack?: string[];
+  services?: string[];
+};
+
+type Preview = {
+  title: string;
+  subtitle: string;
+  metric: string;
+  image: string;
+  tags: string[];
+  imageAlt: string;
+};
+
 export function ProjectLaptopShowcase({
   className,
   compact = false,
@@ -21,23 +46,76 @@ export function ProjectLaptopShowcase({
   compact?: boolean;
 }) {
   const [active, setActive] = useState(0);
+  const [projects, setProjects] = useState<Preview[]>([]);
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 90, damping: 18 });
-  const springY = useSpring(mouseY, { stiffness: 90, damping: 18 });
+
+  const springX = useSpring(mouseX, {
+    stiffness: 90,
+    damping: 18,
+  });
+
+  const springY = useSpring(mouseY, {
+    stiffness: 90,
+    damping: 18,
+  });
+
   const rotateY = useTransform(springX, [-0.5, 0.5], [-8, 8]);
   const rotateX = useTransform(springY, [-0.5, 0.5], [7, -7]);
   const translateX = useTransform(springX, [-0.5, 0.5], [-12, 12]);
   const translateY = useTransform(springY, [-0.5, 0.5], [-10, 10]);
-  const preview = showcasePreviews[active];
 
+  const preview = projects[active];
+
+  /**
+   * Load projects from WordPress API
+   */
   useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        const data = await apiFetch<Project[]>("/projects");
+
+        const mappedProjects: Preview[] = data
+          .filter((project) => project.image?.url)
+          .map((project) => ({
+            title: project.name,
+            subtitle: project.type,
+            metric: project.result,
+            image: project.image?.url || "",
+            imageAlt:
+              project.image?.alt || `${project.name} premium project preview`,
+            tags: [...(project.stack || []), ...(project.services || [])],
+          }));
+
+        setProjects(mappedProjects);
+      } catch (error) {
+        console.error("Failed to load projects:", error);
+      }
+    };
+
+    loadProjects();
+  }, []);
+
+  /**
+   * Auto rotate projects
+   */
+  useEffect(() => {
+    if (!projects.length) return;
+
     const timer = window.setInterval(() => {
-      setActive((current) => (current + 1) % showcasePreviews.length);
+      setActive((current) => (current + 1) % projects.length);
     }, 4400);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [projects.length]);
+
+  /**
+   * Prevent rendering before API data arrives
+   */
+  if (!preview) {
+    return null;
+  }
 
   return (
     <motion.div
@@ -48,7 +126,9 @@ export function ProjectLaptopShowcase({
       )}
       onPointerMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect();
+
         mouseX.set((event.clientX - rect.left) / rect.width - 0.5);
+
         mouseY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
       onPointerLeave={() => {
@@ -61,6 +141,7 @@ export function ProjectLaptopShowcase({
         className="absolute inset-x-12 top-10 h-72 rounded-full bg-accent/20 blur-[96px]"
         aria-hidden="true"
       />
+
       <div
         className="absolute left-1/2 top-1/2 h-[78%] w-[82%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(149,191,71,0.18),rgba(20,184,166,0.08),transparent_68%)] blur-2xl"
         aria-hidden="true"
@@ -92,7 +173,10 @@ export function ProjectLaptopShowcase({
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            style={{ x: translateX, y: translateY }}
+            style={{
+              x: translateX,
+              y: translateY,
+            }}
           >
             {badge}
           </motion.div>
@@ -101,9 +185,17 @@ export function ProjectLaptopShowcase({
 
       <motion.div
         className="relative z-10"
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+        }}
         animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
       >
         <div className="mx-auto w-[92%] rounded-t-[20px] border border-white/14 bg-gradient-to-b from-[#20283300] to-[#0b1017] p-[10px] shadow-[0_45px_120px_rgba(0,0,0,0.55)]">
           <div className="rounded-t-[14px] border border-black/80 bg-black p-[5px]">
@@ -119,20 +211,36 @@ export function ProjectLaptopShowcase({
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={preview.title}
-                    initial={{ opacity: 0, scale: 1.04, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, scale: 0.985, filter: "blur(8px)" }}
-                    transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                    initial={{
+                      opacity: 0,
+                      scale: 1.04,
+                      filter: "blur(10px)",
+                    }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      filter: "blur(0px)",
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.985,
+                      filter: "blur(8px)",
+                    }}
+                    transition={{
+                      duration: 0.9,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
                     className="absolute inset-0"
                   >
                     <Image
                       src={preview.image}
-                      alt={`${preview.title} premium project preview`}
+                      alt={preview.imageAlt}
                       fill
                       priority={active === 0}
                       sizes="(min-width: 1280px) 680px, (min-width: 768px) 60vw, 100vw"
                       className="object-cover"
                     />
+
                     <div className="absolute inset-0 bg-gradient-to-br from-obsidian/82 via-obsidian/18 to-accent/18" />
                   </motion.div>
                 </AnimatePresence>
@@ -143,6 +251,7 @@ export function ProjectLaptopShowcase({
                     <span className="h-2.5 w-2.5 rounded-full bg-yellow-300/80" />
                     <span className="h-2.5 w-2.5 rounded-full bg-accent/90" />
                   </div>
+
                   <span className="text-[11px] font-medium text-muted">
                     akhtardev.com/live-preview
                   </span>
@@ -153,9 +262,11 @@ export function ProjectLaptopShowcase({
                     <p className="text-xs uppercase tracking-[0.22em] text-accent">
                       {preview.subtitle}
                     </p>
+
                     <h3 className="headline mt-2 text-2xl font-semibold text-white sm:text-3xl">
                       {preview.title}
                     </h3>
+
                     <div className="mt-4 flex flex-wrap gap-2">
                       {preview.tags.map((tag) => (
                         <span
@@ -167,10 +278,12 @@ export function ProjectLaptopShowcase({
                       ))}
                     </div>
                   </div>
+
                   <div className="rounded-[8px] border border-accent/25 bg-accent/10 p-3 text-right">
                     <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
                       Outcome
                     </p>
+
                     <p className="headline mt-1 text-xl font-semibold text-accent">
                       {preview.metric}
                     </p>
@@ -184,34 +297,37 @@ export function ProjectLaptopShowcase({
         <div className="mx-auto h-4 w-[98%] rounded-b-[24px] bg-gradient-to-b from-[#29313b] to-[#111820] shadow-[0_28px_70px_rgba(0,0,0,0.44)]">
           <div className="mx-auto h-2 w-32 rounded-b-[14px] bg-black/45" />
         </div>
+
         <div className="mx-auto h-4 w-[72%] rounded-full bg-black/50 blur-xl" />
       </motion.div>
 
       <div className="relative z-20 mx-auto mt-8 grid max-w-xl grid-cols-3 gap-3">
         {[
-          { icon: Layers3, label: "Platform systems" },
-          { icon: Gauge, label: "Fast storefronts" },
-          { icon: Sparkles, label: "Premium motion" },
+          {
+            icon: Layers3,
+            label: "Platform systems",
+          },
+          {
+            icon: Gauge,
+            label: "Fast storefronts",
+          },
+          {
+            icon: Sparkles,
+            label: "Premium motion",
+          },
         ].map((item) => (
           <div
             key={item.label}
             className="rounded-[8px] border border-white/10 bg-white/[0.03] p-3 text-center backdrop-blur"
           >
             <item.icon className="mx-auto h-4 w-4 text-accent" />
+
             <p className="mt-2 text-[11px] font-medium text-muted">
               {item.label}
             </p>
           </div>
         ))}
       </div>
-
-      {/* <div className="absolute bottom-80 -right-16 z-20 hidden rounded-[8px] border border-white/10 bg-obsidian/72 p-4 shadow-premium backdrop-blur-xl lg:block">
-        <Code2 className="h-5 w-5 text-accent" />
-        <p className="mt-3 text-xs text-muted">Type-safe UI</p>
-        <p className="headline text-lg font-semibold">
-          {preview.tags.map((item) => item).join(" + ")}
-        </p>
-      </div> */}
     </motion.div>
   );
 }

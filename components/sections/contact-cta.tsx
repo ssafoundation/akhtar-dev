@@ -1,6 +1,23 @@
 import { Button } from "@/components/ui/button";
+import { apiFetch } from "@/lib/api";
 
-export function ContactCTA() {
+type ContactCTA = {
+  eyebrow: string;
+  heading: string;
+  subtitle: string;
+  primaryButton: {
+    text: string;
+    url: string;
+  };
+  secondaryButton: {
+    text: string;
+    url: string;
+  };
+};
+
+export async function ContactCTA() {
+  const settings = await apiFetch<ContactCTA>("/contact-cta");
+
   return (
     <section className="section-pad overflow-hidden">
       <div className="container-shell">
@@ -18,52 +35,70 @@ export function ContactCTA() {
           "
         >
           <div className="max-w-4xl">
-            <p
-              className="
-                mb-4
-                text-sm
-                font-semibold
-                uppercase
-                tracking-[0.22em]
-                text-accent
-              "
-            >
-              Start a Project
-            </p>
+            {/* Eyebrow */}
+            {settings.eyebrow && (
+              <p
+                className="
+                  mb-4
+                  text-sm
+                  font-semibold
+                  uppercase
+                  tracking-[0.22em]
+                  text-accent
+                "
+              >
+                {settings.eyebrow}
+              </p>
+            )}
 
-            <h2
-              className="
-                headline
-                text-4xl
-                font-semibold
-                leading-[1.05]
-                tracking-tight
-                text-foreground
-                sm:text-6xl
-              "
-            >
-              Ready for a website that feels expensive before a word is read?
-            </h2>
+            {/* Heading */}
+            {settings.heading && (
+              <h2
+                className="
+                  headline
+                  text-4xl
+                  font-semibold
+                  leading-[1.05]
+                  tracking-tight
+                  text-foreground
+                  sm:text-6xl
+                "
+              >
+                {settings.heading}
+              </h2>
+            )}
 
-            <p
-              className="
-                mt-6
-                max-w-2xl
-                text-lg
-                leading-8
-                text-muted-foreground
-              "
-            >
-              Share the goal, the platform, and the launch window. You will get
-              a clear path, realistic scope, and a premium build strategy.
-            </p>
+            {/* Subtitle */}
+            {settings.subtitle && (
+              <p
+                className="
+                  mt-6
+                  max-w-2xl
+                  text-lg
+                  leading-8
+                  text-muted-foreground
+                "
+              >
+                {settings.subtitle}
+              </p>
+            )}
 
+            {/* Buttons */}
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button href="/contact">Contact AKHTAR DEV</Button>
+              {settings.primaryButton?.text && (
+                <Button href={settings.primaryButton.url || "/contact"}>
+                  {settings.primaryButton.text}
+                </Button>
+              )}
 
-              <Button href="/portfolio" variant="ghost">
-                Browse Work
-              </Button>
+              {settings.secondaryButton?.text && (
+                <Button
+                  href={settings.secondaryButton.url || "/portfolio"}
+                  variant="ghost"
+                >
+                  {settings.secondaryButton.text}
+                </Button>
+              )}
             </div>
           </div>
         </div>

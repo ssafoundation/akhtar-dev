@@ -27,12 +27,12 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
+    <header className="fixed inset-x-0 top-0 z-50 px-0 pt-4 sm:px-4">
       <nav
         className={cn(
-          "container-shell flex h-16 items-center justify-between rounded-full border px-4 transition-all duration-300",
+          "container-shell flex h-16 items-center justify-between rounded-full border px-0 sm:px-4 transition-all duration-300",
           scrolled
-            ? "border-border bg-background/80 shadow-premium backdrop-blur-2xl"
+            ? "border-border bg-background/80 shadow-premium backdrop-blur-2xl px-4"
             : "border-transparent bg-transparent",
         )}
         aria-label="Primary navigation"
