@@ -11,14 +11,22 @@ type Project = {
   name: string;
   type: string;
   year: string;
+
+  // Short description used on homepage
   summary: string;
+
+  // Full WordPress content used on project detail page
+  content?: string;
+
   result: string;
+
   image?: {
     url: string;
     width: number;
     height: number;
     alt?: string;
   } | null;
+
   stack: string[];
   services: string[];
   featured: boolean;
@@ -81,18 +89,23 @@ export async function FeaturedProjects({ all = false }: { all?: boolean }) {
                 {/* PROJECT CONTENT */}
                 <div className="flex flex-col justify-between p-7 sm:p-10 lg:min-h-[520px]">
                   <div>
+                    {/* PROJECT META */}
                     <div className="flex flex-wrap items-center gap-3 text-sm text-muted">
-                      <span>{project.type}</span>
+                      {project.type && <span>{project.type}</span>}
 
-                      <span className="h-1 w-1 rounded-full bg-accent" />
+                      {project.type && project.year && (
+                        <span className="h-1 w-1 rounded-full bg-accent" />
+                      )}
 
-                      <span>{project.year}</span>
+                      {project.year && <span>{project.year}</span>}
                     </div>
 
+                    {/* PROJECT NAME */}
                     <h3 className="headline mt-5 text-4xl font-semibold sm:text-5xl">
                       {project.name}
                     </h3>
 
+                    {/* SHORT SUMMARY */}
                     <p className="mt-5 max-w-xl text-base leading-8 text-muted">
                       {project.summary}
                     </p>
@@ -118,7 +131,7 @@ export async function FeaturedProjects({ all = false }: { all?: boolean }) {
                             )
                             .map((item) => (
                               <span
-                                key={item}
+                                key={`${project.slug}-${item}`}
                                 className="rounded-full border border-white/10 px-3 py-1 text-xs text-muted"
                               >
                                 {item}
@@ -127,10 +140,10 @@ export async function FeaturedProjects({ all = false }: { all?: boolean }) {
                         </div>
                       )}
 
-                    {/* LINK */}
+                    {/* VIEW CASE STUDY */}
                     <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">
                       View case study
-                      <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </div>
                 </div>

@@ -85,7 +85,7 @@ export function ProjectLaptopShowcase({
             image: project.image?.url || "",
             imageAlt:
               project.image?.alt || `${project.name} premium project preview`,
-            tags: [...(project.stack || []), ...(project.services || [])],
+            tags: [...(project.stack || [])],
           }));
 
         setProjects(mappedProjects);
@@ -197,7 +197,7 @@ export function ProjectLaptopShowcase({
           ease: "easeInOut",
         }}
       >
-        <div className="mx-auto w-[92%] rounded-t-[20px] border border-white/14 bg-gradient-to-b from-[#20283300] to-[#0b1017] p-[10px] shadow-[0_45px_120px_rgba(0,0,0,0.55)]">
+        <div className="mx-auto w-[92%] rounded-t-[20px] border border-white/14 bg-gradient-to-b from-[#20283300] to-[#0b1017] p-[10px] shadow-[0_45px_120px_rgba(0, 0, 0, 0.185)]">
           <div className="rounded-t-[14px] border border-black/80 bg-black p-[5px]">
             <div className="relative overflow-hidden rounded-t-[10px] bg-obsidian">
               <div
@@ -263,7 +263,7 @@ export function ProjectLaptopShowcase({
                       {preview.subtitle}
                     </p>
 
-                    <h3 className="headline mt-2 text-2xl font-semibold text-white sm:text-3xl">
+                    <h3 className="headline mt-2 text-2xl font-semibold text-white sm:text-1xl">
                       {preview.title}
                     </h3>
 
@@ -279,7 +279,7 @@ export function ProjectLaptopShowcase({
                     </div>
                   </div>
 
-                  <div className="rounded-[8px] border border-accent/25 bg-accent/10 p-3 text-right">
+                  {/* <div className="rounded-[8px] border border-accent/25 bg-accent/10 p-3 text-right">
                     <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
                       Outcome
                     </p>
@@ -287,7 +287,7 @@ export function ProjectLaptopShowcase({
                     <p className="headline mt-1 text-xl font-semibold text-accent">
                       {preview.metric}
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

@@ -60,7 +60,7 @@ export async function AboutHero() {
             )}
 
             {hero.heading && (
-              <h1 className="headline mt-7 max-w-3xl text-5xl font-semibold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 className="headline mt-7 max-w-3xl text-4xl font-semibold leading-[0.95] tracking-tight sm:text-5xl lg:text-6xl">
                 {hero.heading}
               </h1>
             )}

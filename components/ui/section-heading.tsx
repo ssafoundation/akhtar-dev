@@ -13,7 +13,7 @@ export function SectionHeading({
   className?: string;
 }) {
   return (
-    <Reveal className={cn("max-w-3xl", className)}>
+    <Reveal className={cn("max-w-4xl", className)}>
       <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-accent">
         {eyebrow}
       </p>

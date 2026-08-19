@@ -21,7 +21,7 @@ export async function Process() {
   ]);
 
   return (
-    <section className="section-pad border-y border-white/10 bg-white/[0.02] overflow-hidden">
+    <section className="section-pad overflow-hidden border-y border-accent/10 bg-white/[0.02]">
       <div className="container-shell">
         <SectionHeading
           eyebrow={section.eyebrow}
@@ -29,11 +29,20 @@ export async function Process() {
           description={section.subtitle}
         />
 
-        <div className="mt-14 grid gap-4 lg:grid-cols-4">
+        <div className="mt-14 grid gap-4 lg:grid-cols-3">
           {process.map((item, index) => (
             <Reveal key={item.id || item.title} delay={index * 0.05}>
-              <div className="relative h-full rounded-[8px] border bg-elevated p-6">
-                <span className="headline text-sm text-accent">
+              <div
+                className="
+                  relative h-full rounded-[8px]
+                  border border-accent/20
+                  bg-elevated p-6
+                  transition-all duration-300
+                  hover:border-accent/40
+                  hover:shadow-[0_0_30px_rgba(149,191,71,0.08)]
+                "
+              >
+                <span className="headline text-sm font-semibold text-accent">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
