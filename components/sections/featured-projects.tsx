@@ -63,20 +63,42 @@ export async function FeaturedProjects({ all = false }: { all?: boolean }) {
               <Link
                 href={`/portfolio/${project.slug}`}
                 data-tilt-card
-                className="group grid overflow-hidden rounded-[8px] border bg-elevated shadow-premium backdrop-blur lg:grid-cols-2"
+                className="
+                  group
+                  grid
+                  overflow-hidden
+                  rounded-[8px]
+                  bg-elevated
+                  shadow-premium
+                  backdrop-blur
+                  transition-all
+                  duration-300
+                  hover:shadow-[0_0_40px_rgba(148,195,61,0.06)]
+                  lg:grid-cols-2
+                "
               >
                 {/* PROJECT IMAGE */}
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="relative aspect-[1.18] overflow-hidden lg:aspect-auto lg:h-full">
+                <div
+                  className={`
+                    ${index % 2 === 1 ? "lg:order-2" : ""}
+                    overflow-hidden
+                    rounded-[8px]
+                    transition-colors
+                    duration-300
+                    group-hover:border-accent/35
+                  `}
+                >
+                  <div className="relative overflow-hidden lg:aspect-auto lg:h-full">
                     {project.image?.url ? (
                       <Image
                         src={project.image.url}
                         alt={
                           project.image.alt || `${project.name} project preview`
                         }
-                        fill
+                        width={project.image.width}
+                        height={project.image.height}
                         sizes="(min-width: 1024px) 50vw, 100vw"
-                        className="object-cover transition duration-700 group-hover:scale-105"
+                        className="block h-auto w-full transition duration-700 group-hover:scale-101"
                       />
                     ) : (
                       <div className="h-full min-h-[320px] bg-white/[0.03]" />
@@ -132,7 +154,19 @@ export async function FeaturedProjects({ all = false }: { all?: boolean }) {
                             .map((item) => (
                               <span
                                 key={`${project.slug}-${item}`}
-                                className="rounded-full border border-white/10 px-3 py-1 text-xs text-muted"
+                                className="
+                                  rounded-full
+                                  border
+                                  border-accent/10
+                                  bg-accent/[0.03]
+                                  px-3
+                                  py-1
+                                  text-xs
+                                  text-muted
+                                  transition-colors
+                                  duration-300
+                                  group-hover:border-accent/20
+                                "
                               >
                                 {item}
                               </span>

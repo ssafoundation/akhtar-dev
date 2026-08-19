@@ -53,7 +53,7 @@ export async function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden pt-40 md:pt-32 lg:pt-40">
       <div className="aurora" data-parallax="slow" aria-hidden="true" />
 
-      <div className="container-shell grid gap-14 pb-16 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div className="container-shell grid gap-14 pb-16 xl:grid-cols-[0.95fr_1.05fr] lg:items-center">
         {/* LEFT */}
         <Reveal>
           {hero.eyebrow && (

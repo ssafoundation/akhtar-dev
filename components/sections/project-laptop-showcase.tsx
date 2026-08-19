@@ -245,7 +245,7 @@ export function ProjectLaptopShowcase({
                   </motion.div>
                 </AnimatePresence>
 
-                <div className="absolute left-4 right-4 top-4 flex items-center justify-between rounded-full border border-white/10 bg-obsidian/64 px-4 py-2 backdrop-blur-xl">
+                {/* <div className="absolute left-4 right-4 top-4 flex items-center justify-between rounded-full border border-white/10 bg-obsidian/64 px-4 py-2 backdrop-blur-xl">
                   <div className="flex gap-1.5" aria-hidden="true">
                     <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
                     <span className="h-2.5 w-2.5 rounded-full bg-yellow-300/80" />
@@ -255,19 +255,19 @@ export function ProjectLaptopShowcase({
                   <span className="text-[11px] font-medium text-muted">
                     akhtardev.com/live-preview
                   </span>
-                </div>
+                </div> */}
 
                 <div className="absolute bottom-5 left-5 right-5 grid gap-4 rounded-[8px] border border-white/10 bg-obsidian/76 p-5 backdrop-blur-2xl sm:grid-cols-[1fr_auto] sm:items-end">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-accent">
+                    <p className="text-xs uppercase tracking-[0.22em] text-accent hidden sm:flex">
                       {preview.subtitle}
                     </p>
 
-                    <h3 className="headline mt-2 text-2xl font-semibold text-white sm:text-1xl">
+                    <h3 className="headline mt-2 text-[13px] font-semibold text-white sm:text-2xl">
                       {preview.title}
                     </h3>
 
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-4 flex-wrap gap-2 hidden sm:flex">
                       {preview.tags.map((tag) => (
                         <span
                           key={tag}

@@ -50,7 +50,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-1 min-[992px]:flex">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -75,14 +75,14 @@ export function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden md:block">
+        <div className="hidden min-[992px]:block">
           <Button href="/contact" variant="ghost" className="min-h-10 px-4">
             Start a Project
           </Button>
         </div>
 
         {/* Mobile Controls */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 min-[992px]:hidden">
           <ThemeToggle />
 
           <button
@@ -124,7 +124,7 @@ export function Navbar() {
             p-3
             shadow-premium
             backdrop-blur-2xl
-            md:hidden
+            min-[992px]:hidden
           "
         >
           {navItems.map((item) => (

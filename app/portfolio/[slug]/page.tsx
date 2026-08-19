@@ -311,20 +311,18 @@ export default async function PortfolioDetailPage({ params }: Props) {
       {project.image?.url && (
         <section>
           <div className="container-shell">
-            <div className="premium-border overflow-hidden rounded-[8px] bg-panel p-3 shadow-premium">
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[8px]">
-                <Image
-                  src={project.image.url}
-                  alt={
-                    project.image.alt ||
-                    `${project.name} full case study visual`
-                  }
-                  fill
-                  priority
-                  sizes="100vw"
-                  className="object-cover"
-                />
-              </div>
+            <div className="overflow-hidden rounded-[8px]">
+              <Image
+                src={project.image.url}
+                alt={
+                  project.image.alt || `${project.name} full case study visual`
+                }
+                width={project.image.width}
+                height={project.image.height}
+                priority
+                sizes="100vw"
+                className="block h-auto w-full"
+              />
             </div>
           </div>
         </section>

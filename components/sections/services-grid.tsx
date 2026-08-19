@@ -21,13 +21,14 @@ import { Reveal } from "@/components/animations/reveal";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { apiFetch } from "@/lib/api";
+import Link from "next/link";
 
 type Service = {
   id: number;
   title: string;
   description: string;
   subtitle?: string;
-
+  slug?: string;
   // Support multiple possible API field names
   iconName?: string;
   icon_name?: string;
@@ -137,27 +138,29 @@ export async function ServicesGrid({ compact = false }: { compact?: boolean }) {
 
             return (
               <Reveal key={service.id || service.title} delay={index * 0.04}>
-                <Card tilt className="h-full p-7">
-                  {/* ICON */}
-                  <div className="grid h-12 w-12 place-items-center rounded-full border border-accent/20 bg-accent/10 text-accent">
-                    <Icon className="h-6 w-6" strokeWidth={1.8} />
-                  </div>
+                <Link href={`/services/${service.slug}`}>
+                  <Card tilt className="h-full p-7">
+                    {/* ICON */}
+                    <div className="grid h-12 w-12 place-items-center rounded-full border border-accent/20 bg-accent/10 text-accent">
+                      <Icon className="h-6 w-6" strokeWidth={1.8} />
+                    </div>
 
-                  {/* TITLE */}
-                  <h3 className="headline mt-8 text-2xl font-semibold">
-                    {title}
-                  </h3>
+                    {/* TITLE */}
+                    <h3 className="headline mt-8 text-2xl font-semibold">
+                      {title}
+                    </h3>
 
-                  {/* SUBTITLE */}
-                  {subtitle ? (
-                    <p className="mt-2 text-sm font-medium text-accent">
-                      {subtitle}
-                    </p>
-                  ) : null}
+                    {/* SUBTITLE */}
+                    {subtitle ? (
+                      <p className="mt-2 text-sm font-medium text-accent">
+                        {subtitle}
+                      </p>
+                    ) : null}
 
-                  {/* DESCRIPTION */}
-                  <p className="mt-4 leading-7 text-muted">{description}</p>
-                </Card>
+                    {/* DESCRIPTION */}
+                    <p className="mt-4 leading-7 text-muted">{description}</p>
+                  </Card>
+                </Link>
               </Reveal>
             );
           })}
