@@ -6,12 +6,7 @@ import { Process } from "@/components/sections/process";
 import { ServicesGrid } from "@/components/sections/services-grid";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { apiFetch } from "@/lib/api";
-
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Premium Shopify, landing page, WordPress, Wix, React, and Next.js development services.",
-};
+import { siteUrl } from "@/lib/utils";
 
 type ServicesHero = {
   eyebrow: string;
@@ -22,6 +17,56 @@ type ServicesHero = {
 type ServicesPageResponse = {
   hero: ServicesHero;
 };
+
+/**
+ * Services Page SEO
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  let data: ServicesPageResponse | null = null;
+
+  try {
+    data = await apiFetch<ServicesPageResponse>("/services-page");
+  } catch (error) {
+    console.error("Failed to load services SEO data:", error);
+  }
+
+  const hero = data?.hero;
+
+  const title = "Shopify & Web Development Services | AKHTAR DEV";
+
+  const description =
+    hero?.description?.trim() ||
+    "Professional Shopify development, custom Shopify themes and apps, WordPress, Wix, React, and Next.js development services for modern digital brands.";
+
+  return {
+    title,
+
+    description,
+
+    alternates: {
+      canonical: `${siteUrl}/services`,
+    },
+
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/services`,
+      siteName: "AKHTAR DEV",
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default async function ServicesPage() {
   const data = await apiFetch<ServicesPageResponse>("/services-page");

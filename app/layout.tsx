@@ -19,54 +19,106 @@ const space = Space_Grotesk({
   display: "swap",
 });
 
+/**
+ * Global / Homepage SEO
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "AKHTAR DEV | Premium Full Stack Web Developer",
+    default: "Shopify Developer & Full Stack Web Developer | AKHTAR DEV",
     template: "%s | AKHTAR DEV",
   },
 
   description:
-    "Premium portfolio of MD. Akhtaruzzaman, a Full Stack, Shopify, WordPress, Wix, React, and Next.js developer.",
+    "AKHTAR DEV provides professional Shopify development, custom Shopify themes and apps, WordPress, React, Next.js, and modern web development for businesses and digital brands.",
+
+  keywords: [
+    "Shopify Developer",
+    "Shopify Theme Developer",
+    "Shopify App Developer",
+    "Shopify Development",
+    "Shopify Page Builder",
+    "WordPress Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Full Stack Web Developer",
+    "Web Developer",
+    "Custom Website Development",
+  ],
+
+  authors: [
+    {
+      name: "MD. Akhtaruzzaman",
+      url: siteUrl,
+    },
+  ],
+
+  creator: "MD. Akhtaruzzaman",
+  publisher: "AKHTAR DEV",
 
   alternates: {
     canonical: "/",
   },
 
   openGraph: {
-    title: "AKHTAR DEV | Premium Full Stack Web Developer",
+    title: "Shopify Developer & Full Stack Web Developer | AKHTAR DEV",
 
     description:
-      "High-end Shopify, WordPress, Wix, React, and Next.js development for brands that care about quality.",
+      "Professional Shopify, WordPress, React, Next.js, and full stack web development for businesses and digital brands.",
 
     url: siteUrl,
 
     siteName: "AKHTAR DEV",
 
+    locale: "en_US",
+
     type: "website",
+
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "AKHTAR DEV — Shopify & Full Stack Web Developer",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
 
-    title: "AKHTAR DEV",
+    title: "Shopify Developer & Full Stack Web Developer | AKHTAR DEV",
 
-    description: "Premium full stack web development portfolio.",
+    description:
+      "Professional Shopify, WordPress, React, Next.js, and modern web development services.",
+
+    images: ["/og-image.jpg"],
   },
 
   robots: {
     index: true,
     follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
-  const schema = {
+}>) {
+  /**
+   * Person Schema
+   */
+  const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
 
@@ -74,18 +126,38 @@ export default function RootLayout({
 
     alternateName: "AKHTAR DEV",
 
-    jobTitle: "Full Stack Web Developer",
+    jobTitle: "Shopify & Full Stack Web Developer",
 
     url: siteUrl,
 
     knowsAbout: [
       "Shopify",
+      "Shopify Theme Development",
+      "Shopify App Development",
+      "Shopify Page Builder Development",
       "WordPress",
-      "Wix",
+      "WordPress Theme Development",
+      "WordPress Plugin Development",
       "React",
       "Next.js",
       "TypeScript",
+      "JavaScript",
+      "Full Stack Web Development",
     ],
+  };
+
+  /**
+   * Website Schema
+   */
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+
+    name: "AKHTAR DEV",
+
+    alternateName: "Akhtar Dev",
+
+    url: siteUrl,
   };
 
   return (
@@ -99,10 +171,19 @@ export default function RootLayout({
       </head>
 
       <body className="font-sans antialiased">
+        {/* Person Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schema),
+            __html: JSON.stringify(personSchema),
+          }}
+        />
+
+        {/* Website Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
           }}
         />
 

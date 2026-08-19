@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { apiFetch } from "@/lib/api";
+import { siteUrl } from "@/lib/utils";
 
 type Project = {
   id: number;
@@ -73,13 +74,169 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const project = await apiFetch<Project>(`/projects/${slug}`);
 
+    /**
+     * Clean HTML from summary in case WordPress
+     * returns formatted content.
+     */
+    const cleanSummary =
+      project.summary
+        ?.replace(/<[^>]*>/g, "")
+        .replace(/\s+/g, " ")
+        .trim() || "";
+
+    /**
+     * Clean and prepare services.
+     */
+    const services = Array.isArray(project.services)
+      ? project.services
+          .filter(
+            (item): item is string =>
+              typeof item === "string" && item.trim().length > 0,
+          )
+          .map((item) => item.trim())
+      : [];
+
+    /**
+     * Clean and prepare stack.
+     */
+    const stack = Array.isArray(project.stack)
+      ? project.stack
+          .filter(
+            (item): item is string =>
+              typeof item === "string" && item.trim().length > 0,
+          )
+          .map((item) => item.trim())
+      : [];
+
+    /**
+     * Use custom project title if available,
+     * otherwise fallback to project name.
+     */
+    const projectTitle =
+      project.title?.trim() || project.name?.trim() || "Case Study";
+
+    /**
+     * SEO title.
+     *
+     * Example:
+     * Nutri77 | Shopify Development | AKHTAR DEV
+     */
+    const seoTitle = services.length
+      ? `${projectTitle} | ${services.slice(0, 2).join(" & ")} | AKHTAR DEV`
+      : `${projectTitle} | ${project.type || "Web Development"} | AKHTAR DEV`;
+
+    /**
+     * SEO description.
+     */
+    const description =
+      cleanSummary ||
+      project.subtitle?.trim() ||
+      `${projectTitle}${
+        project.type ? ` — ${project.type}` : ""
+      } project developed by AKHTAR DEV.`;
+
+    /**
+     * Canonical project URL.
+     */
+    const canonicalUrl = `${siteUrl}/portfolio/${project.slug}`;
+
+    /**
+     * SEO keywords.
+     *
+     * These are supplementary metadata only.
+     * The main SEO value comes from the visible content,
+     * title, headings, links and overall page quality.
+     */
+    const keywords = [
+      projectTitle,
+      project.name,
+      project.type,
+      ...services,
+      ...stack,
+      "AKHTAR DEV",
+      "Web Development",
+    ].filter(
+      (item, index, array): item is string =>
+        typeof item === "string" &&
+        item.trim().length > 0 &&
+        array.indexOf(item) === index,
+    );
+
     return {
-      title: project.name,
-      description: project.summary,
+      title: seoTitle,
+
+      description,
+
+      keywords,
+
+      alternates: {
+        canonical: canonicalUrl,
+      },
+
+      openGraph: {
+        title: seoTitle,
+
+        description,
+
+        url: canonicalUrl,
+
+        siteName: "AKHTAR DEV",
+
+        type: "article",
+
+        ...(project.image?.url
+          ? {
+              images: [
+                {
+                  url: project.image.url,
+                  width: project.image.width,
+                  height: project.image.height,
+                  alt: project.image.alt || `${project.name} project preview`,
+                },
+              ],
+            }
+          : {}),
+      },
+
+      twitter: {
+        card: "summary_large_image",
+
+        title: seoTitle,
+
+        description,
+
+        ...(project.image?.url
+          ? {
+              images: [project.image.url],
+            }
+          : {}),
+      },
+
+      robots: {
+        index: true,
+        follow: true,
+
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+          "max-video-preview": -1,
+        },
+      },
     };
   } catch {
+    /**
+     * If the project does not exist,
+     * don't allow the fallback page to be indexed.
+     */
     return {
-      title: "Case Study",
+      title: "Case Study | AKHTAR DEV",
+
+      robots: {
+        index: false,
+        follow: true,
+      },
     };
   }
 }

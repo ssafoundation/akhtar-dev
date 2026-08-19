@@ -4,10 +4,44 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/sections/contact-form";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { apiFetch } from "@/lib/api";
+import { siteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Contact AKHTAR DEV for premium web development projects.",
+  title: "Contact | Shopify & Web Development | AKHTAR DEV",
+
+  description:
+    "Contact AKHTAR DEV for professional Shopify, WordPress, React, Next.js, and custom web development projects.",
+
+  alternates: {
+    canonical: `${siteUrl}/contact`,
+  },
+
+  openGraph: {
+    title: "Contact | Shopify & Web Development | AKHTAR DEV",
+
+    description:
+      "Get in touch with AKHTAR DEV for Shopify, WordPress, React, Next.js, and custom web development projects.",
+
+    url: `${siteUrl}/contact`,
+
+    siteName: "AKHTAR DEV",
+
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary",
+
+    title: "Contact | AKHTAR DEV",
+
+    description:
+      "Contact AKHTAR DEV for professional Shopify and web development projects.",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 type ContactInfo = {
@@ -161,7 +195,6 @@ export default async function ContactPage() {
                 />
               </div>
             ) : contact.mapImage?.url ? (
-              /* Image fallback */
               <div
                 className="mt-6 h-64 rounded-[8px] border border-white/10 bg-cover bg-center"
                 style={{

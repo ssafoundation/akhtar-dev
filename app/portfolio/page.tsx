@@ -3,6 +3,7 @@ import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { PageVisual } from "@/components/sections/page-visual";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { apiFetch } from "@/lib/api";
+import { siteUrl } from "@/lib/utils";
 import type { Metadata } from "next";
 
 type PortfolioHero = {
@@ -15,11 +16,52 @@ type PortfolioResponse = {
   hero: PortfolioHero;
 };
 
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description:
-    "Selected web development projects, eCommerce builds, and digital experiences by AKHTAR DEV.",
-};
+/**
+ * Portfolio Page SEO
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  let portfolio: PortfolioResponse | null = null;
+
+  try {
+    portfolio = await apiFetch<PortfolioResponse>("/portfolio");
+  } catch (error) {
+    console.error("Failed to load portfolio SEO data:", error);
+  }
+
+  const description =
+    portfolio?.hero?.description?.trim() ||
+    "Explore selected Shopify, eCommerce, WordPress, React, Next.js, and custom web development projects by AKHTAR DEV.";
+
+  const title = "Shopify & Web Development Portfolio | AKHTAR DEV";
+
+  return {
+    title,
+    description,
+
+    alternates: {
+      canonical: `${siteUrl}/portfolio`,
+    },
+
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/portfolio`,
+      siteName: "AKHTAR DEV",
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default async function PortfolioPage() {
   const portfolio = await apiFetch<PortfolioResponse>("/portfolio");
