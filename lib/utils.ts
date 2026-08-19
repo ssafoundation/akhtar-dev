@@ -5,4 +5,4 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const siteUrl = "https://akhtardev.com";
+export const siteUrl = "https://akhtarlabs.com";
