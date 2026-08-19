@@ -20,8 +20,11 @@ const space = Space_Grotesk({
 });
 
 /**
- * Global / Homepage SEO
+ * =========================================================
+ * GLOBAL SEO / HOMEPAGE SEO
+ * =========================================================
  */
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
@@ -31,21 +34,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "AKHTAR DEV provides professional Shopify development, custom Shopify themes and apps, WordPress, React, Next.js, and modern web development for businesses and digital brands.",
-
-  keywords: [
-    "Shopify Developer",
-    "Shopify Theme Developer",
-    "Shopify App Developer",
-    "Shopify Development",
-    "Shopify Page Builder",
-    "WordPress Developer",
-    "React Developer",
-    "Next.js Developer",
-    "Full Stack Web Developer",
-    "Web Developer",
-    "Custom Website Development",
-  ],
+    "AKHTAR DEV provides professional Shopify development, custom Shopify themes, WordPress, React, Next.js, and modern web development for businesses and digital brands.",
 
   authors: [
     {
@@ -55,12 +44,19 @@ export const metadata: Metadata = {
   ],
 
   creator: "MD. Akhtaruzzaman",
+
   publisher: "AKHTAR DEV",
 
+  /**
+   * Canonical
+   */
   alternates: {
     canonical: "/",
   },
 
+  /**
+   * Open Graph
+   */
   openGraph: {
     title: "Shopify Developer & Full Stack Web Developer | AKHTAR DEV",
 
@@ -85,6 +81,9 @@ export const metadata: Metadata = {
     ],
   },
 
+  /**
+   * Twitter / X
+   */
   twitter: {
     card: "summary_large_image",
 
@@ -96,6 +95,9 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
 
+  /**
+   * Robots
+   */
   robots: {
     index: true,
     follow: true,
@@ -103,63 +105,103 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+
       "max-image-preview": "large",
+
       "max-snippet": -1,
+
       "max-video-preview": -1,
     },
   },
+
+  /**
+   * Icons
+   */
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
+
+/**
+ * =========================================================
+ * PERSON SCHEMA
+ * =========================================================
+ */
+
+const personSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "Person",
+
+  name: "MD. Akhtaruzzaman",
+
+  alternateName: "AKHTAR DEV",
+
+  jobTitle: "Shopify & Full Stack Web Developer",
+
+  url: siteUrl,
+
+  knowsAbout: [
+    "Shopify",
+    "Shopify Theme Development",
+    "Shopify App Development",
+    "Shopify Page Builder Development",
+    "WordPress",
+    "WordPress Theme Development",
+    "WordPress Plugin Development",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Full Stack Web Development",
+    "Web Development",
+    "eCommerce Development",
+  ],
+
+  /**
+   * Add only your real public profiles here.
+   *
+   * Example:
+   *
+   * "https://www.linkedin.com/in/your-profile",
+   * "https://github.com/your-profile",
+   */
+
+  sameAs: [
+    // "https://www.linkedin.com/in/your-profile",
+    // "https://github.com/your-profile",
+  ],
+};
+
+/**
+ * =========================================================
+ * WEBSITE SCHEMA
+ * =========================================================
+ */
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "WebSite",
+
+  name: "AKHTAR DEV",
+
+  alternateName: "Akhtar Dev",
+
+  url: siteUrl,
+};
+
+/**
+ * =========================================================
+ * ROOT LAYOUT
+ * =========================================================
+ */
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  /**
-   * Person Schema
-   */
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-
-    name: "MD. Akhtaruzzaman",
-
-    alternateName: "AKHTAR DEV",
-
-    jobTitle: "Shopify & Full Stack Web Developer",
-
-    url: siteUrl,
-
-    knowsAbout: [
-      "Shopify",
-      "Shopify Theme Development",
-      "Shopify App Development",
-      "Shopify Page Builder Development",
-      "WordPress",
-      "WordPress Theme Development",
-      "WordPress Plugin Development",
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "Full Stack Web Development",
-    ],
-  };
-
-  /**
-   * Website Schema
-   */
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-
-    name: "AKHTAR DEV",
-
-    alternateName: "Akhtar Dev",
-
-    url: siteUrl,
-  };
-
   return (
     <html
       lang="en"
@@ -171,7 +213,10 @@ export default function RootLayout({
       </head>
 
       <body className="font-sans antialiased">
-        {/* Person Schema */}
+        {/* =================================================
+            PERSON STRUCTURED DATA
+        ================================================= */}
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -179,13 +224,20 @@ export default function RootLayout({
           }}
         />
 
-        {/* Website Schema */}
+        {/* =================================================
+            WEBSITE STRUCTURED DATA
+        ================================================= */}
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteSchema),
           }}
         />
+
+        {/* =================================================
+            SITE CONTENT
+        ================================================= */}
 
         <MotionProvider>
           <Navbar />
