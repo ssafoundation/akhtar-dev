@@ -10,6 +10,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "api.akhtarlabs.com",
+      },
+      {
+        protocol: "https",
         hostname: "images.unsplash.com",
       },
     ],
