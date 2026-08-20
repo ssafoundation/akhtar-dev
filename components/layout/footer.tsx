@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Facebook,
   Github,
@@ -6,10 +8,15 @@ import {
   Mail,
   Twitter,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { navItems } from "@/data/site";
 import { apiFetch } from "@/lib/api";
+
+import logoL from "./akhtarlab.png";
+import logo from "./lightmode.png";
 
 type GlobalSettings = {
   email?: string;
@@ -34,11 +41,56 @@ type SocialItem = {
   icon: typeof Github;
 };
 
-export async function Footer() {
-  const [settings, about] = await Promise.all([
-    apiFetch<GlobalSettings>("/settings"),
-    apiFetch<AboutData>("/about"),
-  ]);
+type Theme = "light" | "dark";
+
+export function Footer() {
+  const [settings, setSettings] = useState<GlobalSettings>({});
+  const [about, setAbout] = useState<AboutData>({});
+  const [theme, setTheme] = useState<Theme>("dark");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [settingsData, aboutData] = await Promise.all([
+          apiFetch<GlobalSettings>("/settings"),
+          apiFetch<AboutData>("/about"),
+        ]);
+
+        setSettings(settingsData || {});
+        setAbout(aboutData || {});
+      } catch (error) {
+        console.error("Failed to load footer data:", error);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  useEffect(() => {
+    const currentTheme: Theme = document.documentElement.classList.contains(
+      "dark",
+    )
+      ? "dark"
+      : "light";
+
+    setTheme(currentTheme);
+    setMounted(true);
+
+    const handleThemeChange = (event: Event) => {
+      const customEvent = event as CustomEvent<Theme>;
+
+      if (customEvent.detail === "light" || customEvent.detail === "dark") {
+        setTheme(customEvent.detail);
+      }
+    };
+
+    window.addEventListener("theme-change", handleThemeChange);
+
+    return () => {
+      window.removeEventListener("theme-change", handleThemeChange);
+    };
+  }, []);
 
   const socials = settings.socials || {};
 
@@ -80,8 +132,19 @@ export async function Footer() {
       <div className="container-shell flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
         {/* BRAND / ABOUT */}
         <div>
-          <Link href="/" className="headline text-xl font-semibold">
-            AKHTAR DEV
+          <Link
+            href="/"
+            className="flex items-center"
+            aria-label="Akhtar Labs Home"
+          >
+            {mounted && (
+              <Image
+                src={theme === "dark" ? logoL : logo}
+                alt="Akhtar Labs Logo"
+                className="w-[180px]"
+                priority
+              />
+            )}
           </Link>
 
           <p className="mt-2 max-w-md text-sm leading-6 text-muted">

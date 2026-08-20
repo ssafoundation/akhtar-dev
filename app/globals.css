@@ -506,3 +506,16 @@ footer {
     transform: rotate(315deg) translateX(112px) rotate(-315deg);
   }
 }
+
+.lenis.light .logo-dark {
+  display: block;
+}
+.lenis.light .logo-light {
+  display: none;
+}
+.lenis.dark .logo-dark {
+  display: none;
+}
+.lenis.dark .logo-light {
+  display: block;
+}

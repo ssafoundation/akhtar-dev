@@ -4,14 +4,25 @@ import { Button } from "@/components/ui/button";
 import { navItems } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
 import { ThemeToggle } from "../theme/theme-toggle";
+
+import logoL from "./akhtarlab.png";
+import logo from "./lightmode.png";
+
+type Theme = "light" | "dark";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  const [theme, setTheme] = useState<Theme>("dark");
+  const [mounted, setMounted] = useState(false);
+
+  // Scroll detection
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 16);
@@ -26,13 +37,39 @@ export function Navbar() {
     };
   }, []);
 
+  // Theme detection + theme change listener
+  useEffect(() => {
+    const currentTheme: Theme = document.documentElement.classList.contains(
+      "dark",
+    )
+      ? "dark"
+      : "light";
+
+    setTheme(currentTheme);
+    setMounted(true);
+
+    const handleThemeChange = (event: Event) => {
+      const customEvent = event as CustomEvent<Theme>;
+
+      if (customEvent.detail === "light" || customEvent.detail === "dark") {
+        setTheme(customEvent.detail);
+      }
+    };
+
+    window.addEventListener("theme-change", handleThemeChange);
+
+    return () => {
+      window.removeEventListener("theme-change", handleThemeChange);
+    };
+  }, []);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-0 pt-4 sm:px-4">
       <nav
         className={cn(
-          "container-shell flex h-16 items-center justify-between rounded-full border px-0 sm:px-4 transition-all duration-300",
+          "container-shell flex h-16 items-center justify-between rounded-full border px-0 transition-all duration-300 sm:px-4",
           scrolled
-            ? "border-border bg-background/80 shadow-premium backdrop-blur-2xl px-4"
+            ? "border-border bg-background/80 px-4 shadow-premium backdrop-blur-2xl"
             : "border-transparent bg-transparent",
         )}
         aria-label="Primary navigation"
@@ -40,13 +77,24 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="headline flex items-center gap-3 text-lg font-semibold text-foreground"
+          className="flex items-center"
+          aria-label="Akhtar Labs Home"
         >
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-sm font-bold text-accent-foreground">
-            AK
-          </span>
-
-          <span>AKHTAR DEV</span>
+          {mounted && theme === "dark" ? (
+            <Image
+              src={logoL}
+              alt="Akhtar Labs Logo"
+              className="w-[180px]"
+              priority
+            />
+          ) : mounted && theme === "light" ? (
+            <Image
+              src={logo}
+              alt="Akhtar Labs Logo"
+              className="w-[180px]"
+              priority
+            />
+          ) : null}
         </Link>
 
         {/* Desktop Navigation */}
