@@ -30,9 +30,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const description =
     portfolio?.hero?.description?.trim() ||
-    "Explore selected Shopify, eCommerce, WordPress, React, Next.js, and custom web development projects by AKHTAR DEV.";
+    "Explore selected Shopify, eCommerce, WordPress, React, Next.js, and custom web development projects by AKHTAR LABS.";
 
-  const title = "Shopify & Web Development Portfolio | AKHTAR DEV";
+  const title = "Shopify & Web Development Portfolio | AKHTAR LABS";
 
   return {
     title,
@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: `${siteUrl}/portfolio`,
-      siteName: "AKHTAR DEV",
+      siteName: "AKHTAR LABS",
       type: "website",
     },
 

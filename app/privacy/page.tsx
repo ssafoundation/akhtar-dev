@@ -7,21 +7,21 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
 
   description:
-    "Read the Privacy Policy for AKHTAR DEV, including how submitted information, contact details, and basic analytics data are handled.",
+    "Read the Privacy Policy for AKHTAR LABS, including how submitted information, contact details, and basic analytics data are handled.",
 
   alternates: {
     canonical: `${siteUrl}/privacy`,
   },
 
   openGraph: {
-    title: "Privacy Policy | AKHTAR DEV",
+    title: "Privacy Policy | AKHTAR LABS",
 
     description:
-      "Learn how AKHTAR DEV handles information submitted through contact forms and direct communication.",
+      "Learn how AKHTAR LABS handles information submitted through contact forms and direct communication.",
 
     url: `${siteUrl}/privacy`,
 
-    siteName: "AKHTAR DEV",
+    siteName: "AKHTAR LABS",
 
     type: "website",
   },
@@ -29,10 +29,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
 
-    title: "Privacy Policy | AKHTAR DEV",
+    title: "Privacy Policy | AKHTAR LABS",
 
     description:
-      "Learn how AKHTAR DEV handles submitted information and basic analytics data.",
+      "Learn how AKHTAR LABS handles submitted information and basic analytics data.",
   },
 
   robots: {
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
 
             <div className="mt-8 space-y-6 text-base leading-8 text-muted">
               <p>
-                AKHTAR DEV collects only the information you choose to share
+                AKHTAR LABS collects only the information you choose to share
                 through contact forms or direct communication, such as your
                 name, email address, project details, and budget range.
               </p>

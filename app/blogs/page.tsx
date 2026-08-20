@@ -39,7 +39,7 @@ type BlogPost = {
    ========================================================= */
 
 export const metadata: Metadata = {
-  title: "Blog | AKHTAR DEV",
+  title: "Blog | AKHTAR LABS",
   description:
     "Practical insights on Shopify, React, Next.js, WordPress, web development, performance, and premium web design.",
 };
@@ -425,7 +425,7 @@ export default async function BlogsPage() {
                     text-muted
                   "
                 >
-                  <span>AKHTAR DEV</span>
+                  <span>AKHTAR LABS</span>
 
                   {featuredPost.date && (
                     <>

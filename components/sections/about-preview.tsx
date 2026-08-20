@@ -44,7 +44,7 @@ export async function AboutPreview() {
               {about.image?.url ? (
                 <Image
                   src={about.image.url}
-                  alt={about.image.alt || "About Akhtar Dev"}
+                  alt={about.image.alt || "About AKHTAR LABS"}
                   fill
                   sizes="(min-width: 1024px) 42vw, 100vw"
                   className="object-cover"

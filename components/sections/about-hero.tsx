@@ -119,7 +119,7 @@ export async function AboutHero() {
                   {hero.image?.url ? (
                     <Image
                       src={hero.image.url}
-                      alt={hero.image.alt || "MD. Akhtaruzzaman - AKHTAR DEV"}
+                      alt={hero.image.alt || "MD. Akhtaruzzaman - AKHTAR LABS"}
                       fill
                       priority
                       sizes="(min-width: 1024px) 50vw, 100vw"
@@ -154,7 +154,7 @@ export async function AboutHero() {
               </div>
 
               <div className="absolute -right-3 bottom-8 rounded-full border border-accent/30 bg-panel/90 px-4 py-2 text-xs font-semibold text-accent shadow-premium backdrop-blur sm:-right-6">
-                AKHTAR DEV
+                AKHTAR LABS
               </div>
             </div>
           </Reveal>

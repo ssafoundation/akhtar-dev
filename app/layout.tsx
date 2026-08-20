@@ -29,12 +29,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "Shopify Developer & Full Stack Web Developer | AKHTAR DEV",
-    template: "%s | AKHTAR DEV",
+    default: "Shopify Developer & Full Stack Web Developer | AKHTAR LABS",
+    template: "%s | AKHTAR LABS",
   },
 
   description:
-    "AKHTAR DEV provides professional Shopify development, custom Shopify themes, WordPress, React, Next.js, and modern web development for businesses and digital brands.",
+    "AKHTAR LABS provides professional Shopify development, custom Shopify themes, WordPress, React, Next.js, and modern web development for businesses and digital brands.",
 
   authors: [
     {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
   creator: "MD. Akhtaruzzaman",
 
-  publisher: "AKHTAR DEV",
+  publisher: "AKHTAR LABS",
 
   /**
    * Canonical
@@ -58,14 +58,14 @@ export const metadata: Metadata = {
    * Open Graph
    */
   openGraph: {
-    title: "Shopify Developer & Full Stack Web Developer | AKHTAR DEV",
+    title: "Shopify Developer & Full Stack Web Developer | AKHTAR LABS",
 
     description:
       "Professional Shopify, WordPress, React, Next.js, and full stack web development for businesses and digital brands.",
 
     url: siteUrl,
 
-    siteName: "AKHTAR DEV",
+    siteName: "AKHTAR LABS",
 
     locale: "en_US",
 
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "AKHTAR DEV — Shopify & Full Stack Web Developer",
+        alt: "AKHTAR LABS — Shopify & Full Stack Web Developer",
       },
     ],
   },
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Shopify Developer & Full Stack Web Developer | AKHTAR DEV",
+    title: "Shopify Developer & Full Stack Web Developer | AKHTAR LABS",
 
     description:
       "Professional Shopify, WordPress, React, Next.js, and modern web development services.",
@@ -135,7 +135,7 @@ const personSchema = {
 
   name: "MD. Akhtaruzzaman",
 
-  alternateName: "AKHTAR DEV",
+  alternateName: "AKHTAR LABS",
 
   jobTitle: "Shopify & Full Stack Web Developer",
 
@@ -184,9 +184,9 @@ const websiteSchema = {
 
   "@type": "WebSite",
 
-  name: "AKHTAR DEV",
+  name: "AKHTAR LABS",
 
-  alternateName: "Akhtar Dev",
+  alternateName: "AKHTAR LABS",
 
   url: siteUrl,
 };

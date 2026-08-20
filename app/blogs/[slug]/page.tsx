@@ -165,19 +165,19 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Article Not Found | AKHTAR DEV",
+      title: "Article Not Found | AKHTAR LABS",
     };
   }
 
-  const title = clean(post.title) || "AKHTAR DEV Blog";
+  const title = clean(post.title) || "AKHTAR LABS Blog";
 
   const description =
-    clean(post.excerpt) || "Web development insights from AKHTAR DEV.";
+    clean(post.excerpt) || "Web development insights from AKHTAR LABS.";
 
   const image = getImageData(post.image);
 
   return {
-    title: `${title} | AKHTAR DEV`,
+    title: `${title} | AKHTAR LABS`,
     description,
 
     alternates: {
@@ -397,7 +397,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           {/* Meta */}
 
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 font-mono text-xs text-muted">
-            <span>AKHTAR DEV</span>
+            <span>AKHTAR LABS</span>
 
             {post.date && (
               <>

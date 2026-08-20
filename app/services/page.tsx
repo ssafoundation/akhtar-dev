@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const hero = data?.hero;
 
-  const title = "Shopify & Web Development Services | AKHTAR DEV";
+  const title = "Shopify & Web Development Services | AKHTAR LABS";
 
   const description =
     hero?.description?.trim() ||
@@ -51,7 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: `${siteUrl}/services`,
-      siteName: "AKHTAR DEV",
+      siteName: "AKHTAR LABS",
       type: "website",
     },
 

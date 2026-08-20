@@ -95,7 +95,7 @@ export async function generateMetadata({
   const description =
     service.description ||
     service.subtitle ||
-    `Professional ${title} services by AKHTAR DEV.`;
+    `Professional ${title} services by AKHTAR LABS.`;
 
   return {
     title,
@@ -107,7 +107,7 @@ export async function generateMetadata({
     },
 
     openGraph: {
-      title: `${title} | AKHTAR DEV`,
+      title: `${title} | AKHTAR LABS`,
       description,
       url: `/services/${service.slug}`,
       type: "website",
@@ -115,7 +115,7 @@ export async function generateMetadata({
 
     twitter: {
       card: "summary_large_image",
-      title: `${title} | AKHTAR DEV`,
+      title: `${title} | AKHTAR LABS`,
       description,
     },
 

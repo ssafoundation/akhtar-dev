@@ -84,14 +84,14 @@ export function Navbar() {
             <Image
               src={logoL}
               alt="Akhtar Labs Logo"
-              className="w-[180px]"
+              className="w-[140px] sm:w-[160px]"
               priority
             />
           ) : mounted && theme === "light" ? (
             <Image
               src={logo}
               alt="Akhtar Labs Logo"
-              className="w-[180px]"
+              className="w-[140px] sm:w-[160px]"
               priority
             />
           ) : null}

@@ -236,7 +236,7 @@ export async function ServiceWhyUs({ slug }: Props) {
               clean(item.title) ||
               clean(item.label) ||
               clean(item.name) ||
-              "Why AKHTAR DEV";
+              "Why AKHTAR LABS";
 
             const itemDescription = clean(item.description) || clean(item.desc);
 

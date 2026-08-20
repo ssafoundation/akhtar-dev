@@ -7,24 +7,24 @@ import { apiFetch } from "@/lib/api";
 import { siteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Contact | Shopify & Web Development | AKHTAR DEV",
+  title: "Contact | Shopify & Web Development | AKHTAR LABS",
 
   description:
-    "Contact AKHTAR DEV for professional Shopify, WordPress, React, Next.js, and custom web development projects.",
+    "Contact AKHTAR LABS for professional Shopify, WordPress, React, Next.js, and custom web development projects.",
 
   alternates: {
     canonical: `${siteUrl}/contact`,
   },
 
   openGraph: {
-    title: "Contact | Shopify & Web Development | AKHTAR DEV",
+    title: "Contact | Shopify & Web Development | AKHTAR LABS",
 
     description:
-      "Get in touch with AKHTAR DEV for Shopify, WordPress, React, Next.js, and custom web development projects.",
+      "Get in touch with AKHTAR LABS for Shopify, WordPress, React, Next.js, and custom web development projects.",
 
     url: `${siteUrl}/contact`,
 
-    siteName: "AKHTAR DEV",
+    siteName: "AKHTAR LABS",
 
     type: "website",
   },
@@ -32,10 +32,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
 
-    title: "Contact | AKHTAR DEV",
+    title: "Contact | AKHTAR LABS",
 
     description:
-      "Contact AKHTAR DEV for professional Shopify and web development projects.",
+      "Contact AKHTAR LABS for professional Shopify and web development projects.",
   },
 
   robots: {
@@ -106,7 +106,7 @@ const fallbackData: ContactPageData = {
   map: {
     type: "google",
     embedUrl: "",
-    title: "AKHTAR DEV location",
+    title: "AKHTAR LABS location",
   },
 
   mapImage: null,
@@ -190,7 +190,7 @@ export default async function ContactPage() {
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
                   title={
-                    contact.map?.title || "AKHTAR DEV location on Google Maps"
+                    contact.map?.title || "AKHTAR LABS location on Google Maps"
                   }
                 />
               </div>

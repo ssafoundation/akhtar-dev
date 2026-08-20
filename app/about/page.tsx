@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "About MD. Akhtaruzzaman | Shopify & Full Stack Developer",
 
   description:
-    "Learn about MD. Akhtaruzzaman, the developer behind AKHTAR DEV, specializing in Shopify development, custom themes and apps, WordPress, React, Next.js, and modern web development.",
+    "Learn about MD. Akhtaruzzaman, the developer behind AKHTAR LABS, specializing in Shopify development, custom themes and apps, WordPress, React, Next.js, and modern web development.",
 
   alternates: {
     canonical: `${siteUrl}/about`,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
     url: `${siteUrl}/about`,
 
-    siteName: "AKHTAR DEV",
+    siteName: "AKHTAR LABS",
 
     type: "profile",
   },
@@ -32,10 +32,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
 
-    title: "About MD. Akhtaruzzaman | AKHTAR DEV",
+    title: "About MD. Akhtaruzzaman | AKHTAR LABS",
 
     description:
-      "Learn about MD. Akhtaruzzaman, Shopify and full stack web developer behind AKHTAR DEV.",
+      "Learn about MD. Akhtaruzzaman, Shopify and full stack web developer behind AKHTAR LABS.",
   },
 
   robots: {

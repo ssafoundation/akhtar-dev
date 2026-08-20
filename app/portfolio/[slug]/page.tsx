@@ -119,11 +119,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
      * SEO title.
      *
      * Example:
-     * Nutri77 | Shopify Development | AKHTAR DEV
+     * Nutri77 | Shopify Development | AKHTAR LABS
      */
     const seoTitle = services.length
-      ? `${projectTitle} | ${services.slice(0, 2).join(" & ")} | AKHTAR DEV`
-      : `${projectTitle} | ${project.type || "Web Development"} | AKHTAR DEV`;
+      ? `${projectTitle} | ${services.slice(0, 2).join(" & ")} | AKHTAR LABS`
+      : `${projectTitle} | ${project.type || "Web Development"} | AKHTAR LABS`;
 
     /**
      * SEO description.
@@ -133,7 +133,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       project.subtitle?.trim() ||
       `${projectTitle}${
         project.type ? ` — ${project.type}` : ""
-      } project developed by AKHTAR DEV.`;
+      } project developed by AKHTAR LABS.`;
 
     /**
      * Canonical project URL.
@@ -153,7 +153,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       project.type,
       ...services,
       ...stack,
-      "AKHTAR DEV",
+      "AKHTAR LABS",
       "Web Development",
     ].filter(
       (item, index, array): item is string =>
@@ -180,7 +180,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
         url: canonicalUrl,
 
-        siteName: "AKHTAR DEV",
+        siteName: "AKHTAR LABS",
 
         type: "article",
 
@@ -231,7 +231,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
      * don't allow the fallback page to be indexed.
      */
     return {
-      title: "Case Study | AKHTAR DEV",
+      title: "Case Study | AKHTAR LABS",
 
       robots: {
         index: false,
